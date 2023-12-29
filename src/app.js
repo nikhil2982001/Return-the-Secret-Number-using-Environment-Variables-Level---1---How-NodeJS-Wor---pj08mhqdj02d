@@ -10,6 +10,15 @@ app.use(express.json());
 */
 app.get('/api/get-env', (req, res) => {
    //Write your code here
+     const numberValue = process.env.NUMBER;
+
+   if (numberValue !== undefined) {
+     res.json({ number: numberValue });
+   } else {
+     res.status(500).json({ error: 'NUMBER variable is not defined in the .env file' });
+   }
 });
 
 module.exports = app;
+
+
